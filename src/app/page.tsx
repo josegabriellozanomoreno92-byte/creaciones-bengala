@@ -42,25 +42,33 @@ export default function Home() {
   return (
     <main className="relative h-screen overflow-hidden bg-black text-white">
 
-      {/* BACKGROUND GLOW */}
+      {/* BACKGROUND */}
       <div className="absolute inset-0">
 
-        <div className="absolute left-1/2 top-[-25vh] h-[70vw] w-[70vw] -translate-x-1/2 rounded-full bg-orange-500/20 blur-3xl" />
+        {/* MAIN SOFT GLOW */}
+        <div className="absolute left-1/2 top-[-35vh] h-[70vw] w-[70vw] -translate-x-1/2 rounded-full bg-orange-500/12 blur-3xl" />
 
-        <div className="absolute bottom-[-10vh] left-[-5vw] h-[30vw] w-[30vw] rounded-full bg-red-500/10 blur-3xl" />
+        {/* TOP FOCUS */}
+        <div className="absolute left-1/2 top-[5vh] h-[28vw] w-[28vw] -translate-x-1/2 rounded-full bg-orange-500/10 blur-3xl" />
+
+        {/* BOTTOM DEPTH */}
+        <div className="absolute bottom-[-20vh] left-[-10vw] h-[35vw] w-[35vw] rounded-full bg-red-500/8 blur-3xl" />
+
+        {/* DARK VIGNETTE */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_35%,black_90%)]" />
 
       </div>
 
       {/* NAVBAR */}
-      <header className="absolute top-0 z-50 w-full px-[3vw] py-[2vh]">
+      <header className="absolute top-0 z-50 w-full px-[4vw] py-[2.2vh]">
 
-        <div className="mx-auto flex max-w-[1800px] items-center justify-between">
+        <div className="mx-auto flex max-w-[1600px] items-center justify-between">
 
-          <div className="text-[0.65rem] uppercase tracking-[0.45em] text-zinc-500">
+          <div className="text-[0.7rem] uppercase tracking-[0.45em] text-zinc-500">
             Creaciones Bengala
           </div>
 
-          <nav className="hidden md:flex gap-10 text-[0.65rem] uppercase tracking-[0.35em] text-zinc-400">
+          <nav className="hidden md:flex gap-12 text-[0.7rem] uppercase tracking-[0.35em] text-zinc-400">
 
             <button className="transition hover:text-white">
               Proyectos
@@ -81,9 +89,9 @@ export default function Home() {
       </header>
 
       {/* MAIN */}
-      <section className="relative z-10 flex h-full flex-col px-[3vw] pt-[9vh] pb-[3vh]">
+      <section className="relative z-10 flex h-full flex-col px-[4vw] pt-[11vh] pb-[4vh]">
 
-        <div className="mx-auto flex h-full w-full max-w-[1800px] flex-col">
+        <div className="mx-auto flex h-full w-full max-w-[1600px] flex-col">
 
           {/* HERO */}
           <div className="flex flex-col items-center">
@@ -93,52 +101,62 @@ export default function Home() {
               src="/logo.png"
               alt="Creaciones Bengala"
               className="w-[clamp(380px,34vw,760px)] object-contain"
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1 }}
             />
 
             {/* SLOGAN */}
             <motion.h1
-              className="mt-[1vh] max-w-[900px] text-center text-[clamp(1.2rem,2vw,2.8rem)] font-light leading-[1.15] text-white/90"
-              initial={{ opacity: 0, y: 25 }}
+              className="mt-[1vh] max-w-[1000px] text-center text-[clamp(1.8rem,3vw,5rem)] font-light leading-[1.02] text-white"
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
             >
-              Convertimos tus ideas en experiencias reales.
+              Construimos aquello que todavía no existe.
             </motion.h1>
 
           </div>
 
           {/* CONTENT */}
-          <div className="mt-[4vh] flex flex-1 gap-[2vw] overflow-hidden">
+          <div className="mt-[4vh] flex flex-1 gap-[2.2vw] overflow-hidden">
 
-            {/* BOTONES */}
-            <div className="flex w-[260px] min-w-[260px] flex-col justify-center gap-4">
+            {/* SIDEBAR */}
+            <div className="flex w-[250px] min-w-[250px] flex-col justify-center">
 
-              {[
-                "Explorar proyectos",
-                "Quiénes somos",
-                "Cuéntanos tu proyecto",
-              ].map((item) => (
+              {/* BUTTONS */}
+              <div className="flex flex-col gap-4">
 
-                <button
-                  key={item}
-                  className="group relative overflow-hidden border border-white/15 bg-white/[0.02] px-8 py-5 text-left uppercase tracking-[0.28em] text-[0.68rem] backdrop-blur-sm transition-all duration-500 hover:border-white/40"
-                >
+                <button className="group relative overflow-hidden border border-white/15 bg-white/[0.02] px-8 py-5 text-left uppercase tracking-[0.28em] text-[0.68rem] backdrop-blur-sm transition-all duration-500 hover:border-white/40">
 
                   <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
-                    {item}
+                    Explorar proyectos
                   </span>
 
                   <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-500 group-hover:translate-y-0" />
 
                 </button>
 
-              ))}
+                <button className="group relative overflow-hidden rounded-full border border-orange-500/30 bg-orange-500/5 px-8 py-5 text-left uppercase tracking-[0.28em] text-[0.68rem] backdrop-blur-sm transition-all duration-500 hover:border-orange-400">
 
-              {/* REDES */}
-              <div className="mt-4 flex gap-5 text-[0.7rem] uppercase tracking-[0.3em] text-zinc-500">
+                  <span className="relative z-10">
+                    Quiénes somos
+                  </span>
+
+                </button>
+
+                <button className="group relative overflow-hidden bg-orange-500 px-8 py-5 text-left uppercase tracking-[0.28em] text-[0.68rem] text-black shadow-[0_0_40px_rgba(255,115,0,0.25)] transition-all duration-500 hover:bg-orange-400">
+
+                  <span className="relative z-10">
+                    Cuéntanos tu proyecto
+                  </span>
+
+                </button>
+
+              </div>
+
+              {/* SOCIAL */}
+              <div className="mt-8 flex gap-6 text-[0.7rem] uppercase tracking-[0.28em] text-zinc-500">
 
                 <button className="transition hover:text-white">
                   Instagram
@@ -152,14 +170,14 @@ export default function Home() {
 
             </div>
 
-            {/* GALERÍA */}
+            {/* GALLERY */}
             <div className="flex flex-1 flex-col overflow-hidden">
 
-              <div className="mb-[1.5vh] text-[0.65rem] uppercase tracking-[0.45em] text-zinc-500">
+              <div className="mb-[1.8vh] text-[0.68rem] uppercase tracking-[0.45em] text-zinc-500">
                 Proyectos destacados
               </div>
 
-              <div className="flex flex-1 gap-4 overflow-hidden">
+              <div className="flex h-full gap-4 overflow-hidden">
 
                 {projects.map((project, index) => {
 
@@ -176,7 +194,7 @@ export default function Home() {
                       transition={{
                         duration: 0.45,
                       }}
-                      className="group relative h-full cursor-pointer overflow-hidden rounded-[2rem] bg-zinc-900"
+                      className="group relative h-full cursor-pointer overflow-hidden rounded-[2.2rem] bg-zinc-900"
                     >
 
                       {/* IMAGE */}
@@ -197,11 +215,11 @@ export default function Home() {
                         }`}
                       >
 
-                        <div className="mb-3 text-[0.65rem] uppercase tracking-[0.3em] text-orange-400">
+                        <div className="mb-3 text-[0.7rem] uppercase tracking-[0.3em] text-orange-400">
                           {project.category}
                         </div>
 
-                        <h3 className="max-w-[420px] text-[clamp(1.3rem,2vw,3rem)] font-light leading-tight">
+                        <h3 className="max-w-[420px] text-[clamp(1.4rem,2vw,3rem)] font-light leading-tight">
                           {project.title}
                         </h3>
 
