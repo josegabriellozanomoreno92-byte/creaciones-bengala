@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 const projects = [
   {
@@ -36,6 +37,31 @@ const projects = [
 ];
 
 export default function Home() {
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+
+    const container = scrollRef.current;
+
+    if (!container) return;
+
+    const handleWheel = (e: WheelEvent) => {
+
+      e.preventDefault();
+
+      container.scrollLeft += e.deltaY;
+
+    };
+
+    container.addEventListener("wheel", handleWheel);
+
+    return () => {
+      container.removeEventListener("wheel", handleWheel);
+    };
+
+  }, []);
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-black text-white">
 
@@ -74,24 +100,24 @@ export default function Home() {
       </header>
 
       {/* HERO */}
-      <section className="relative z-10 px-6 pt-36 pb-20">
+      <section className="relative z-10 flex min-h-screen flex-col justify-center px-6 pt-32 pb-20">
 
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-7xl w-full">
 
-          {/* TOP */}
-          <div className="mb-20 max-w-4xl">
+          {/* LOGO + SLOGAN */}
+          <div className="mb-20 text-center">
 
             <motion.img
               src="/logo.png"
               alt="Creaciones Bengala"
-              className="w-80 md:w-[480px] mb-10"
+              className="mx-auto w-80 md:w-[520px] mb-10"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.2 }}
             />
 
             <motion.h1
-              className="max-w-3xl text-4xl md:text-6xl font-light leading-[1.05]"
+              className="mx-auto max-w-4xl text-4xl md:text-6xl font-light leading-[1.05]"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
@@ -99,15 +125,20 @@ export default function Home() {
               Convertimos tus ideas en experiencias reales.
             </motion.h1>
 
+          </div>
+
+          {/* CONTENIDO */}
+          <div className="grid gap-10 lg:grid-cols-[260px_1fr] items-start">
+
             {/* BOTONES */}
             <motion.div
-              className="mt-12 flex flex-wrap gap-4"
+              className="flex flex-col gap-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
             >
 
-              <button className="group relative overflow-hidden border border-white/20 px-8 py-4 uppercase tracking-[0.3em] text-xs">
+              <button className="group relative overflow-hidden border border-white/20 px-8 py-4 uppercase tracking-[0.3em] text-xs text-left">
 
                 <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
                   Explorar proyectos
@@ -117,7 +148,7 @@ export default function Home() {
 
               </button>
 
-              <button className="group relative overflow-hidden border border-white/20 px-8 py-4 uppercase tracking-[0.3em] text-xs">
+              <button className="group relative overflow-hidden border border-white/20 px-8 py-4 uppercase tracking-[0.3em] text-xs text-left">
 
                 <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
                   Quiénes somos
@@ -127,7 +158,7 @@ export default function Home() {
 
               </button>
 
-              <button className="group relative overflow-hidden border border-white/20 px-8 py-4 uppercase tracking-[0.3em] text-xs">
+              <button className="group relative overflow-hidden border border-white/20 px-8 py-4 uppercase tracking-[0.3em] text-xs text-left">
 
                 <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
                   Cuéntanos tu proyecto
@@ -139,72 +170,74 @@ export default function Home() {
 
             </motion.div>
 
-          </div>
+            {/* GALERÍA */}
+            <div>
 
-          {/* PROYECTOS */}
-          <div>
+              <div className="mb-8 text-xs uppercase tracking-[0.4em] text-zinc-500">
+                Proyectos destacados
+              </div>
 
-            <div className="mb-8 text-xs uppercase tracking-[0.4em] text-zinc-500">
-              Proyectos destacados
-            </div>
+              <div
+                ref={scrollRef}
+                className="flex gap-6 overflow-x-auto pb-8"
+                style={{
+                  scrollbarWidth: "none",
+                  msOverflowStyle: "none",
+                }}
+              >
 
-            <div
-              className="flex gap-6 overflow-x-auto pb-8 scrollbar-hide snap-x snap-mandatory"
-              style={{
-                scrollBehavior: "smooth",
-              }}
-            >
+                {projects.map((project, index) => (
 
-              {projects.map((project, index) => (
+                  <motion.div
+                    key={index}
+                    whileHover={{
+                      scale: 1.12,
+                      y: -16,
+                    }}
+                    transition={{
+                      duration: 0.4,
+                    }}
+                    className="group relative min-w-[360px] overflow-hidden rounded-[42px] bg-zinc-900"
+                  >
 
-                <motion.div
-                  key={index}
-                  whileHover={{
-                    scale: 1.08,
-                    y: -12,
-                  }}
-                  transition={{
-                    duration: 0.4,
-                  }}
-                  className="group relative min-w-[360px] snap-center overflow-hidden rounded-[40px] bg-zinc-900"
-                >
+                    {/* IMAGEN */}
+                    <div className="overflow-hidden">
 
-                  {/* IMAGEN */}
-                  <div className="overflow-hidden">
+                      <img
+                        src={project.image}
+                        className="h-[640px] w-[360px] object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
 
-                    <img
-                      src={project.image}
-                      className="h-[620px] w-[360px] object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-
-                  </div>
-
-                  {/* OVERLAY */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-
-                  {/* GLOW */}
-                  <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-
-                    <div className="absolute bottom-0 h-1/2 w-full bg-orange-500/20 blur-3xl" />
-
-                  </div>
-
-                  {/* TEXTO */}
-                  <div className="absolute bottom-0 p-8">
-
-                    <div className="mb-3 text-xs uppercase tracking-[0.3em] text-orange-400">
-                      {project.category}
                     </div>
 
-                    <h3 className="max-w-[280px] text-3xl font-light leading-tight">
-                      {project.title}
-                    </h3>
+                    {/* OVERLAY */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 
-                  </div>
+                    {/* GLOW */}
+                    <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
 
-                </motion.div>
+                      <div className="absolute bottom-0 h-1/2 w-full bg-orange-500/20 blur-3xl" />
 
-              ))}
+                    </div>
+
+                    {/* TEXTO */}
+                    <div className="absolute bottom-0 p-8">
+
+                      <div className="mb-3 text-xs uppercase tracking-[0.3em] text-orange-400">
+                        {project.category}
+                      </div>
+
+                      <h3 className="max-w-[280px] text-3xl font-light leading-tight">
+                        {project.title}
+                      </h3>
+
+                    </div>
+
+                  </motion.div>
+
+                ))}
+
+              </div>
 
             </div>
 
@@ -213,6 +246,13 @@ export default function Home() {
         </div>
 
       </section>
+
+      {/* OCULTAR SCROLLBAR */}
+      <style jsx global>{`
+        ::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
 
     </main>
   );
