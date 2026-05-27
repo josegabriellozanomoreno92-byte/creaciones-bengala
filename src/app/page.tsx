@@ -2,6 +2,11 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import {
+  Instagram,
+  Facebook,
+  MessageCircle,
+} from "lucide-react";
 
 const projects = [
   {
@@ -42,16 +47,15 @@ export default function Home() {
   return (
     <main className="relative h-screen overflow-hidden bg-black text-white">
 
-      {/* GLOW SUPERIOR */}
-      <div className="absolute top-[-15vh] left-1/2 h-[55vw] w-[55vw] -translate-x-1/2 rounded-full bg-orange-500/20 blur-3xl" />
+      {/* GLOW */}
+      <div className="absolute top-[-20vh] left-1/2 h-[65vw] w-[65vw] -translate-x-1/2 rounded-full bg-orange-500/20 blur-3xl" />
 
-      {/* GLOW INFERIOR */}
-      <div className="absolute bottom-[-10vh] left-0 h-[25vw] w-[25vw] bg-red-500/10 blur-3xl" />
+      <div className="absolute bottom-[-15vh] left-0 h-[30vw] w-[30vw] bg-red-500/10 blur-3xl" />
 
       {/* NAVBAR */}
       <header className="fixed top-0 z-50 w-full px-[4vw] py-[2vh]">
 
-        <div className="mx-auto flex max-w-[1600px] items-center justify-between">
+        <div className="mx-auto flex max-w-[1700px] items-center justify-between">
 
           <div className="text-[0.65rem] uppercase tracking-[0.45em] text-zinc-500">
             Creaciones Bengala
@@ -78,15 +82,15 @@ export default function Home() {
       </header>
 
       {/* CONTENIDO */}
-      <section className="relative z-10 flex h-full flex-col items-center justify-center px-[4vw] pt-[9vh]">
+      <section className="relative z-10 flex h-full flex-col items-center justify-center px-[4vw] pt-[8vh]">
 
-        <div className="mx-auto flex w-full max-w-[1600px] flex-col items-center">
+        <div className="mx-auto flex w-full max-w-[1700px] flex-col items-center">
 
           {/* LOGO */}
           <motion.img
             src="/logo.png"
             alt="Creaciones Bengala"
-            className="mb-[1.5vh] w-[clamp(200px,20vw,340px)]"
+            className="mb-[1vh] w-[clamp(340px,34vw,700px)]"
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
@@ -94,7 +98,7 @@ export default function Home() {
 
           {/* SLOGAN */}
           <motion.h1
-            className="max-w-[900px] text-center text-[clamp(1.6rem,3vw,3.8rem)] font-light leading-[1.05]"
+            className="max-w-[1100px] text-center text-[clamp(1.4rem,2.4vw,3rem)] font-light leading-[1.1]"
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -118,7 +122,7 @@ export default function Home() {
 
               <button
                 key={item}
-                className="group relative overflow-hidden border border-white/20 px-8 py-4 uppercase tracking-[0.3em] text-[0.65rem]"
+                className="group relative overflow-hidden border border-white/20 px-10 py-4 uppercase tracking-[0.3em] text-[0.65rem]"
               >
 
                 <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
@@ -134,12 +138,12 @@ export default function Home() {
           </motion.div>
 
           {/* TITULO */}
-          <div className="mt-[4vh] mb-[1.5vh] text-[0.65rem] uppercase tracking-[0.45em] text-zinc-500">
+          <div className="mt-[4vh] mb-[2vh] text-[0.7rem] uppercase tracking-[0.45em] text-zinc-500">
             Proyectos destacados
           </div>
 
           {/* GALERÍA */}
-          <div className="flex h-[clamp(180px,30vh,320px)] w-full gap-4 overflow-hidden">
+          <div className="flex h-[clamp(320px,46vh,560px)] w-full gap-4 overflow-hidden">
 
             {projects.map((project, index) => {
 
@@ -151,12 +155,12 @@ export default function Home() {
                   key={index}
                   onMouseEnter={() => setActive(index)}
                   animate={{
-                    width: isActive ? "42%" : "14%",
+                    width: isActive ? "44%" : "14%",
                   }}
                   transition={{
                     duration: 0.45,
                   }}
-                  className="group relative h-full cursor-pointer overflow-hidden rounded-[2rem] bg-zinc-900"
+                  className="group relative h-full cursor-pointer overflow-hidden rounded-[2.2rem] bg-zinc-900"
                 >
 
                   {/* IMAGEN */}
@@ -166,7 +170,14 @@ export default function Home() {
                   />
 
                   {/* OVERLAY */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+
+                  {/* GLOW */}
+                  <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+
+                    <div className="absolute bottom-0 h-1/2 w-full bg-orange-500/20 blur-3xl" />
+
+                  </div>
 
                   {/* TEXTO */}
                   <div
@@ -177,11 +188,11 @@ export default function Home() {
                     }`}
                   >
 
-                    <div className="mb-3 text-[0.65rem] uppercase tracking-[0.3em] text-orange-400">
+                    <div className="mb-3 text-[0.7rem] uppercase tracking-[0.3em] text-orange-400">
                       {project.category}
                     </div>
 
-                    <h3 className="max-w-[320px] text-[clamp(1rem,1.5vw,2rem)] font-light leading-tight">
+                    <h3 className="max-w-[420px] text-[clamp(1.4rem,2vw,3rem)] font-light leading-tight">
                       {project.title}
                     </h3>
 
@@ -196,18 +207,18 @@ export default function Home() {
           </div>
 
           {/* REDES */}
-          <div className="mt-[3vh] flex items-center gap-6 text-[0.7rem] uppercase tracking-[0.35em] text-zinc-500">
+          <div className="mt-[3vh] flex items-center gap-6 text-zinc-500">
 
             <button className="hover:text-white transition-colors duration-500">
-              Instagram
+              <Instagram size={24} strokeWidth={1.5} />
             </button>
 
             <button className="hover:text-white transition-colors duration-500">
-              Facebook
+              <Facebook size={24} strokeWidth={1.5} />
             </button>
 
             <button className="hover:text-white transition-colors duration-500">
-              WhatsApp
+              <MessageCircle size={24} strokeWidth={1.5} />
             </button>
 
           </div>
