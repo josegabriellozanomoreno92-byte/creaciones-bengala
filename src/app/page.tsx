@@ -2,11 +2,6 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import {
-  InstagramIcon,
-  FacebookIcon,
-  MessageCircleIcon,
-} from "lucide-react";
 
 const projects = [
   {
@@ -202,16 +197,16 @@ export default function Home() {
           {/* REDES */}
           <div className="mt-[3vh] flex items-center gap-8 text-zinc-500">
 
-            <button className="hover:text-white transition-colors duration-500">
-              <InstagramIcon size={26} strokeWidth={1.5} />
+            <button className="hover:text-white transition-colors duration-500 text-sm tracking-[0.3em] uppercase">
+              Instagram
             </button>
 
-            <button className="hover:text-white transition-colors duration-500">
-              <FacebookIcon size={26} strokeWidth={1.5} />
+            <button className="hover:text-white transition-colors duration-500 text-sm tracking-[0.3em] uppercase">
+              Facebook
             </button>
 
-            <button className="hover:text-white transition-colors duration-500">
-              <MessageCircleIcon size={26} strokeWidth={1.5} />
+            <button className="hover:text-white transition-colors duration-500 text-sm tracking-[0.3em] uppercase">
+              WhatsApp
             </button>
 
           </div>
