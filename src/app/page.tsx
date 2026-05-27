@@ -37,38 +37,38 @@ const projects = [
 ];
 
 export default function Home() {
-  const [active, setActive] = useState(4);
+  const [active, setActive] = useState(2);
 
   return (
     <main className="relative h-screen overflow-hidden bg-black text-white">
 
       {/* BACKGROUND */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
 
-        {/* MAIN SOFT GLOW */}
-        <div className="absolute left-1/2 top-[-35vh] h-[70vw] w-[70vw] -translate-x-1/2 rounded-full bg-orange-500/12 blur-3xl" />
+        {/* CENTRAL LIGHT */}
+        <div className="absolute left-1/2 top-[-25vh] h-[55vw] w-[55vw] -translate-x-1/2 rounded-full bg-orange-500/10 blur-3xl" />
 
-        {/* TOP FOCUS */}
-        <div className="absolute left-1/2 top-[5vh] h-[28vw] w-[28vw] -translate-x-1/2 rounded-full bg-orange-500/10 blur-3xl" />
+        {/* TOP LIGHT */}
+        <div className="absolute left-1/2 top-[0vh] h-[22vw] w-[22vw] -translate-x-1/2 rounded-full bg-orange-400/10 blur-3xl" />
 
-        {/* BOTTOM DEPTH */}
-        <div className="absolute bottom-[-20vh] left-[-10vw] h-[35vw] w-[35vw] rounded-full bg-red-500/8 blur-3xl" />
+        {/* LOWER DEPTH */}
+        <div className="absolute bottom-[-25vh] left-[-10vw] h-[30vw] w-[30vw] rounded-full bg-red-500/5 blur-3xl" />
 
-        {/* DARK VIGNETTE */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_35%,black_90%)]" />
+        {/* VIGNETTE */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_25%,black_90%)]" />
 
       </div>
 
-      {/* NAVBAR */}
-      <header className="absolute top-0 z-50 w-full px-[4vw] py-[2.2vh]">
+      {/* NAV */}
+      <header className="absolute top-0 z-50 w-full px-[5vw] py-[2.2vh]">
 
-        <div className="mx-auto flex max-w-[1600px] items-center justify-between">
+        <div className="mx-auto flex max-w-[1450px] items-center justify-between">
 
-          <div className="text-[0.7rem] uppercase tracking-[0.45em] text-zinc-500">
+          <div className="text-[0.68rem] uppercase tracking-[0.45em] text-zinc-500">
             Creaciones Bengala
           </div>
 
-          <nav className="hidden md:flex gap-12 text-[0.7rem] uppercase tracking-[0.35em] text-zinc-400">
+          <nav className="hidden md:flex gap-12 text-[0.68rem] uppercase tracking-[0.35em] text-zinc-400">
 
             <button className="transition hover:text-white">
               Proyectos
@@ -89,9 +89,9 @@ export default function Home() {
       </header>
 
       {/* MAIN */}
-      <section className="relative z-10 flex h-full flex-col px-[4vw] pt-[11vh] pb-[4vh]">
+      <section className="relative z-10 flex h-full flex-col px-[5vw] pt-[10vh] pb-[4vh]">
 
-        <div className="mx-auto flex h-full w-full max-w-[1600px] flex-col">
+        <div className="mx-auto flex h-full w-full max-w-[1450px] flex-col">
 
           {/* HERO */}
           <div className="flex flex-col items-center">
@@ -100,7 +100,7 @@ export default function Home() {
             <motion.img
               src="/logo.png"
               alt="Creaciones Bengala"
-              className="w-[clamp(380px,34vw,760px)] object-contain"
+              className="w-[clamp(280px,26vw,520px)] object-contain"
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1 }}
@@ -108,7 +108,7 @@ export default function Home() {
 
             {/* SLOGAN */}
             <motion.h1
-              className="mt-[1vh] max-w-[1000px] text-center text-[clamp(1.8rem,3vw,5rem)] font-light leading-[1.02] text-white"
+              className="mt-[1vh] max-w-[780px] text-center text-[clamp(1.5rem,2.4vw,3.4rem)] font-light leading-[1.02] text-white"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
@@ -119,15 +119,14 @@ export default function Home() {
           </div>
 
           {/* CONTENT */}
-          <div className="mt-[4vh] flex flex-1 gap-[2.2vw] overflow-hidden">
+          <div className="mt-[4vh] flex flex-1 gap-[2vw] overflow-hidden">
 
-            {/* SIDEBAR */}
-            <div className="flex w-[250px] min-w-[250px] flex-col justify-center">
+            {/* LEFT PANEL */}
+            <div className="flex w-[220px] min-w-[220px] flex-col justify-end pb-[2vh]">
 
-              {/* BUTTONS */}
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-3">
 
-                <button className="group relative overflow-hidden border border-white/15 bg-white/[0.02] px-8 py-5 text-left uppercase tracking-[0.28em] text-[0.68rem] backdrop-blur-sm transition-all duration-500 hover:border-white/40">
+                <button className="group relative overflow-hidden border border-white/10 bg-white/[0.02] px-7 py-5 text-left uppercase tracking-[0.28em] text-[0.68rem] backdrop-blur-sm transition-all duration-500 hover:border-white/30">
 
                   <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
                     Explorar proyectos
@@ -137,15 +136,17 @@ export default function Home() {
 
                 </button>
 
-                <button className="group relative overflow-hidden rounded-full border border-orange-500/30 bg-orange-500/5 px-8 py-5 text-left uppercase tracking-[0.28em] text-[0.68rem] backdrop-blur-sm transition-all duration-500 hover:border-orange-400">
+                <button className="group relative overflow-hidden border border-white/10 bg-white/[0.02] px-7 py-5 text-left uppercase tracking-[0.28em] text-[0.68rem] backdrop-blur-sm transition-all duration-500 hover:border-white/30">
 
-                  <span className="relative z-10">
+                  <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
                     Quiénes somos
                   </span>
 
+                  <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-500 group-hover:translate-y-0" />
+
                 </button>
 
-                <button className="group relative overflow-hidden bg-orange-500 px-8 py-5 text-left uppercase tracking-[0.28em] text-[0.68rem] text-black shadow-[0_0_40px_rgba(255,115,0,0.25)] transition-all duration-500 hover:bg-orange-400">
+                <button className="group relative overflow-hidden border border-orange-500/20 bg-orange-500/90 px-7 py-5 text-left uppercase tracking-[0.28em] text-[0.68rem] text-black shadow-[0_0_40px_rgba(255,115,0,0.18)] transition-all duration-500 hover:bg-orange-400">
 
                   <span className="relative z-10">
                     Cuéntanos tu proyecto
@@ -156,7 +157,7 @@ export default function Home() {
               </div>
 
               {/* SOCIAL */}
-              <div className="mt-8 flex gap-6 text-[0.7rem] uppercase tracking-[0.28em] text-zinc-500">
+              <div className="mt-8 flex gap-5 text-[0.7rem] uppercase tracking-[0.28em] text-zinc-600">
 
                 <button className="transition hover:text-white">
                   Instagram
@@ -170,13 +171,14 @@ export default function Home() {
 
             </div>
 
-            {/* GALLERY */}
+            {/* RIGHT CONTENT */}
             <div className="flex flex-1 flex-col overflow-hidden">
 
-              <div className="mb-[1.8vh] text-[0.68rem] uppercase tracking-[0.45em] text-zinc-500">
+              <div className="mb-[1.5vh] pl-1 text-[0.68rem] uppercase tracking-[0.45em] text-zinc-500">
                 Proyectos destacados
               </div>
 
+              {/* CAROUSEL */}
               <div className="flex h-full gap-4 overflow-hidden">
 
                 {projects.map((project, index) => {
@@ -189,10 +191,11 @@ export default function Home() {
                       key={index}
                       onMouseEnter={() => setActive(index)}
                       animate={{
-                        width: isActive ? "46%" : "13.5%",
+                        width: isActive ? "52%" : "12%",
                       }}
                       transition={{
                         duration: 0.45,
+                        ease: "easeOut",
                       }}
                       className="group relative h-full cursor-pointer overflow-hidden rounded-[2.2rem] bg-zinc-900"
                     >
@@ -200,11 +203,18 @@ export default function Home() {
                       {/* IMAGE */}
                       <img
                         src={project.image}
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                       />
 
-                      {/* OVERLAY */}
+                      {/* DARK OVERLAY */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+
+                      {/* HOVER LIGHT */}
+                      <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+
+                        <div className="absolute bottom-0 h-[45%] w-full bg-orange-500/10 blur-3xl" />
+
+                      </div>
 
                       {/* CONTENT */}
                       <div
@@ -215,11 +225,11 @@ export default function Home() {
                         }`}
                       >
 
-                        <div className="mb-3 text-[0.7rem] uppercase tracking-[0.3em] text-orange-400">
+                        <div className="mb-3 text-[0.68rem] uppercase tracking-[0.3em] text-orange-400">
                           {project.category}
                         </div>
 
-                        <h3 className="max-w-[420px] text-[clamp(1.4rem,2vw,3rem)] font-light leading-tight">
+                        <h3 className="max-w-[420px] text-[clamp(1.5rem,2vw,3rem)] font-light leading-[1.02]">
                           {project.title}
                         </h3>
 
