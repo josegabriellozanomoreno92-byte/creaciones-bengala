@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import {
-  Instagram,
-  Facebook,
-  MessageCircle,
+  InstagramIcon,
+  FacebookIcon,
+  MessageCircleIcon,
 } from "lucide-react";
 
 const projects = [
@@ -82,7 +82,7 @@ export default function Home() {
       </header>
 
       {/* CONTENIDO */}
-      <section className="relative z-10 flex h-full flex-col items-center justify-center px-[4vw] pt-[8vh]">
+      <section className="relative z-10 flex h-full flex-col items-center justify-center px-[4vw] pt-[6vh]">
 
         <div className="mx-auto flex w-full max-w-[1700px] flex-col items-center">
 
@@ -90,7 +90,7 @@ export default function Home() {
           <motion.img
             src="/logo.png"
             alt="Creaciones Bengala"
-            className="mb-[1vh] w-[clamp(340px,34vw,700px)]"
+            className="mb-[1vh] w-[clamp(420px,38vw,760px)]"
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
@@ -98,7 +98,7 @@ export default function Home() {
 
           {/* SLOGAN */}
           <motion.h1
-            className="max-w-[1100px] text-center text-[clamp(1.4rem,2.4vw,3rem)] font-light leading-[1.1]"
+            className="max-w-[1200px] text-center text-[clamp(1.2rem,2vw,2.4rem)] font-light leading-[1.15]"
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -143,7 +143,7 @@ export default function Home() {
           </div>
 
           {/* GALERÍA */}
-          <div className="flex h-[clamp(320px,46vh,560px)] w-full gap-4 overflow-hidden">
+          <div className="flex h-[clamp(360px,50vh,620px)] w-full gap-4 overflow-hidden">
 
             {projects.map((project, index) => {
 
@@ -171,13 +171,6 @@ export default function Home() {
 
                   {/* OVERLAY */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-
-                  {/* GLOW */}
-                  <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-
-                    <div className="absolute bottom-0 h-1/2 w-full bg-orange-500/20 blur-3xl" />
-
-                  </div>
 
                   {/* TEXTO */}
                   <div
@@ -207,18 +200,18 @@ export default function Home() {
           </div>
 
           {/* REDES */}
-          <div className="mt-[3vh] flex items-center gap-6 text-zinc-500">
+          <div className="mt-[3vh] flex items-center gap-8 text-zinc-500">
 
             <button className="hover:text-white transition-colors duration-500">
-              <Instagram size={24} strokeWidth={1.5} />
+              <InstagramIcon size={26} strokeWidth={1.5} />
             </button>
 
             <button className="hover:text-white transition-colors duration-500">
-              <Facebook size={24} strokeWidth={1.5} />
+              <FacebookIcon size={26} strokeWidth={1.5} />
             </button>
 
             <button className="hover:text-white transition-colors duration-500">
-              <MessageCircle size={24} strokeWidth={1.5} />
+              <MessageCircleIcon size={26} strokeWidth={1.5} />
             </button>
 
           </div>
