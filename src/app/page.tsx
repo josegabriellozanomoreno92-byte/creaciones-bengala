@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main className="relative overflow-hidden bg-black text-white">
 
-      {/* Glow fondo */}
+      {/* GLOWS */}
       <div className="absolute top-[-200px] left-1/2 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-orange-500/20 blur-3xl" />
 
       <div className="absolute bottom-0 left-0 h-[400px] w-[400px] bg-red-500/10 blur-3xl" />
@@ -41,35 +41,36 @@ export default function Home() {
       </header>
 
       {/* HERO */}
-      <section className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center">
+      <section className="relative z-10 flex min-h-[70vh] flex-col items-center justify-center px-6 pt-32 text-center">
 
         <motion.img
           src="/logo.png"
           alt="Creaciones Bengala"
-          className="w-80 md:w-[500px] mb-10"
+          className="w-72 md:w-[420px] mb-8"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5 }}
         />
 
         <motion.h1
-          className="max-w-5xl text-5xl md:text-8xl font-light leading-[1.1]"
+          className="max-w-4xl text-3xl md:text-5xl font-light leading-[1.2]"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2 }}
         >
-          Construimos aquello que todavía no existe.
+          Convertimos tus ideas en experiencias reales.
         </motion.h1>
 
+        {/* BOTONES */}
         <motion.div
-          className="mt-16 flex flex-col md:flex-row items-center gap-6"
+          className="mt-12 flex flex-col md:flex-row items-center gap-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
         >
 
-          {/* BOTÓN 1 */}
-          <button className="group relative overflow-hidden border border-white/20 px-10 py-5 uppercase tracking-[0.3em] text-sm">
+          {/* BOTÓN */}
+          <button className="group relative overflow-hidden border border-white/20 px-8 py-4 uppercase tracking-[0.3em] text-xs">
 
             <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
               Explorar proyectos
@@ -79,17 +80,25 @@ export default function Home() {
 
           </button>
 
-          {/* BOTÓN 2 */}
-          <button className="rounded-full border border-orange-500/30 bg-white/5 px-10 py-5 text-sm uppercase tracking-[0.3em] backdrop-blur-md hover:bg-orange-500/20 transition-all duration-500">
+          {/* BOTÓN */}
+          <button className="group relative overflow-hidden border border-white/20 px-8 py-4 uppercase tracking-[0.3em] text-xs">
 
-            Quiénes somos
+            <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
+              Quiénes somos
+            </span>
+
+            <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-500 group-hover:translate-y-0" />
 
           </button>
 
-          {/* BOTÓN 3 */}
-          <button className="bg-orange-500 px-10 py-5 text-sm uppercase tracking-[0.3em] text-black hover:scale-105 hover:bg-orange-400 transition-all duration-500 shadow-[0_0_40px_rgba(249,115,22,0.35)]">
+          {/* BOTÓN */}
+          <button className="group relative overflow-hidden border border-white/20 px-8 py-4 uppercase tracking-[0.3em] text-xs">
 
-            Cuéntanos tu proyecto
+            <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
+              Cuéntanos tu proyecto
+            </span>
+
+            <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-500 group-hover:translate-y-0" />
 
           </button>
 
@@ -98,47 +107,47 @@ export default function Home() {
       </section>
 
       {/* PROYECTOS */}
-      <section className="relative z-10 px-6 pb-40">
+      <section className="relative z-10 px-6 pb-32 -mt-10">
 
         <div className="mx-auto max-w-7xl">
 
-          <div className="mb-20 flex items-end justify-between">
+          <div className="mb-16 flex items-end justify-between">
 
-            <h2 className="text-5xl md:text-7xl font-light">
+            <h2 className="text-4xl md:text-6xl font-light">
               Proyectos destacados
             </h2>
 
-            <div className="hidden md:block text-zinc-500 uppercase tracking-[0.3em] text-sm">
+            <div className="hidden md:block text-zinc-500 uppercase tracking-[0.3em] text-xs">
               Selección premium
             </div>
 
           </div>
 
-          <div className="grid gap-10 md:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-2">
 
             {/* PROYECTO 1 */}
-            <div className="group overflow-hidden rounded-[40px] bg-zinc-900">
+            <div className="group overflow-hidden rounded-[32px] bg-zinc-900">
 
               <div className="overflow-hidden">
 
                 <img
                   src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1600&auto=format&fit=crop"
-                  className="h-[700px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="h-[520px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
 
               </div>
 
-              <div className="p-10">
+              <div className="p-8">
 
-                <div className="mb-4 text-sm uppercase tracking-[0.3em] text-orange-400">
+                <div className="mb-3 text-xs uppercase tracking-[0.3em] text-orange-400">
                   Carrozas Temáticas
                 </div>
 
-                <h3 className="mb-6 text-4xl font-light">
+                <h3 className="mb-4 text-3xl font-light">
                   Escenografía visual a gran escala
                 </h3>
 
-                <p className="text-zinc-400 leading-relaxed">
+                <p className="text-sm leading-relaxed text-zinc-400">
                   Construcciones artesanales desarrolladas para transformar
                   espacios, eventos y recorridos en experiencias visuales únicas.
                 </p>
@@ -148,30 +157,30 @@ export default function Home() {
             </div>
 
             {/* PROYECTO 2 */}
-            <div className="group overflow-hidden rounded-[40px] bg-zinc-900">
+            <div className="group overflow-hidden rounded-[32px] bg-zinc-900">
 
               <div className="overflow-hidden">
 
                 <img
                   src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1600&auto=format&fit=crop"
-                  className="h-[700px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="h-[520px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
 
               </div>
 
-              <div className="p-10">
+              <div className="p-8">
 
-                <div className="mb-4 text-sm uppercase tracking-[0.3em] text-orange-400">
+                <div className="mb-3 text-xs uppercase tracking-[0.3em] text-orange-400">
                   Tematización de Espacios
                 </div>
 
-                <h3 className="mb-6 text-4xl font-light">
+                <h3 className="mb-4 text-3xl font-light">
                   Diseñamos atmósferas inmersivas
                 </h3>
 
-                <p className="text-zinc-400 leading-relaxed">
-                  Materiales, volumen, iluminación y composición visual para
-                  crear experiencias memorables y completamente personalizadas.
+                <p className="text-sm leading-relaxed text-zinc-400">
+                  Materiales, volumen e iluminación para crear experiencias
+                  visuales completamente personalizadas.
                 </p>
 
               </div>
