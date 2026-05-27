@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useState } from "react";
 
 const projects = [
   {
@@ -38,40 +38,18 @@ const projects = [
 
 export default function Home() {
 
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-
-    const container = scrollRef.current;
-
-    if (!container) return;
-
-    const handleWheel = (e: WheelEvent) => {
-
-      e.preventDefault();
-
-      container.scrollLeft += e.deltaY;
-
-    };
-
-    container.addEventListener("wheel", handleWheel);
-
-    return () => {
-      container.removeEventListener("wheel", handleWheel);
-    };
-
-  }, []);
+  const [active, setActive] = useState(2);
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-black text-white">
+    <main className="relative h-screen overflow-hidden bg-black text-white">
 
       {/* GLOW */}
-      <div className="absolute top-[-300px] left-1/2 h-[900px] w-[900px] -translate-x-1/2 rounded-full bg-orange-500/20 blur-3xl" />
+      <div className="absolute top-[-250px] left-1/2 h-[900px] w-[900px] -translate-x-1/2 rounded-full bg-orange-500/20 blur-3xl" />
 
-      <div className="absolute bottom-0 left-0 h-[500px] w-[500px] bg-red-500/10 blur-3xl" />
+      <div className="absolute bottom-[-200px] left-0 h-[500px] w-[500px] bg-red-500/10 blur-3xl" />
 
       {/* NAVBAR */}
-      <header className="fixed top-0 z-50 w-full px-8 py-6 backdrop-blur-md">
+      <header className="fixed top-0 z-50 w-full px-8 py-6">
 
         <div className="mx-auto flex max-w-7xl items-center justify-between">
 
@@ -99,160 +77,134 @@ export default function Home() {
 
       </header>
 
-      {/* HERO */}
-      <section className="relative z-10 flex min-h-screen flex-col justify-center px-6 pt-32 pb-20">
+      {/* CONTENIDO */}
+      <section className="relative z-10 flex h-full flex-col justify-center px-6 pt-28 pb-10">
 
-        <div className="mx-auto max-w-7xl w-full">
+        <div className="mx-auto flex w-full max-w-7xl flex-col items-center">
 
-          {/* LOGO + SLOGAN */}
-          <div className="mb-20 text-center">
+          {/* LOGO */}
+          <motion.img
+            src="/logo.png"
+            alt="Creaciones Bengala"
+            className="mb-8 w-72 md:w-[460px]"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+          />
 
-            <motion.img
-              src="/logo.png"
-              alt="Creaciones Bengala"
-              className="mx-auto w-80 md:w-[520px] mb-10"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2 }}
-            />
+          {/* SLOGAN */}
+          <motion.h1
+            className="max-w-4xl text-center text-3xl md:text-6xl font-light leading-[1.05]"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+          >
+            Convertimos tus ideas en experiencias reales.
+          </motion.h1>
 
-            <motion.h1
-              className="mx-auto max-w-4xl text-4xl md:text-6xl font-light leading-[1.05]"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-            >
-              Convertimos tus ideas en experiencias reales.
-            </motion.h1>
+          {/* BOTONES */}
+          <motion.div
+            className="mt-10 flex flex-wrap items-center justify-center gap-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
 
-          </div>
+            {[
+              "Explorar proyectos",
+              "Quiénes somos",
+              "Cuéntanos tu proyecto",
+            ].map((item) => (
 
-          {/* CONTENIDO */}
-          <div className="grid gap-10 lg:grid-cols-[260px_1fr] items-start">
-
-            {/* BOTONES */}
-            <motion.div
-              className="flex flex-col gap-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-            >
-
-              <button className="group relative overflow-hidden border border-white/20 px-8 py-4 uppercase tracking-[0.3em] text-xs text-left">
-
-                <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
-                  Explorar proyectos
-                </span>
-
-                <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-500 group-hover:translate-y-0" />
-
-              </button>
-
-              <button className="group relative overflow-hidden border border-white/20 px-8 py-4 uppercase tracking-[0.3em] text-xs text-left">
-
-                <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
-                  Quiénes somos
-                </span>
-
-                <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-500 group-hover:translate-y-0" />
-
-              </button>
-
-              <button className="group relative overflow-hidden border border-white/20 px-8 py-4 uppercase tracking-[0.3em] text-xs text-left">
-
-                <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
-                  Cuéntanos tu proyecto
-                </span>
-
-                <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-500 group-hover:translate-y-0" />
-
-              </button>
-
-            </motion.div>
-
-            {/* GALERÍA */}
-            <div>
-
-              <div className="mb-8 text-xs uppercase tracking-[0.4em] text-zinc-500">
-                Proyectos destacados
-              </div>
-
-              <div
-                ref={scrollRef}
-                className="flex gap-6 overflow-x-auto pb-8"
-                style={{
-                  scrollbarWidth: "none",
-                  msOverflowStyle: "none",
-                }}
+              <button
+                key={item}
+                className="group relative overflow-hidden border border-white/20 px-8 py-4 uppercase tracking-[0.3em] text-xs"
               >
 
-                {projects.map((project, index) => (
+                <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
+                  {item}
+                </span>
 
-                  <motion.div
-                    key={index}
-                    whileHover={{
-                      scale: 1.12,
-                      y: -16,
-                    }}
-                    transition={{
-                      duration: 0.4,
-                    }}
-                    className="group relative min-w-[360px] overflow-hidden rounded-[42px] bg-zinc-900"
+                <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-500 group-hover:translate-y-0" />
+
+              </button>
+
+            ))}
+
+          </motion.div>
+
+          {/* TITULO */}
+          <div className="mt-14 mb-8 text-xs uppercase tracking-[0.4em] text-zinc-500">
+            Proyectos destacados
+          </div>
+
+          {/* GALERÍA */}
+          <div className="flex h-[420px] w-full gap-4 overflow-hidden">
+
+            {projects.map((project, index) => {
+
+              const isActive = active === index;
+
+              return (
+
+                <motion.div
+                  key={index}
+                  onMouseEnter={() => setActive(index)}
+                  animate={{
+                    width: isActive ? "42%" : "14%",
+                  }}
+                  transition={{
+                    duration: 0.45,
+                  }}
+                  className="group relative h-full cursor-pointer overflow-hidden rounded-[36px] bg-zinc-900"
+                >
+
+                  {/* IMAGEN */}
+                  <img
+                    src={project.image}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+
+                  {/* OVERLAY */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+
+                  {/* GLOW */}
+                  <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+
+                    <div className="absolute bottom-0 h-1/2 w-full bg-orange-500/20 blur-3xl" />
+
+                  </div>
+
+                  {/* TEXTO */}
+                  <div
+                    className={`absolute bottom-0 p-8 transition-all duration-500 ${
+                      isActive
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-10"
+                    }`}
                   >
 
-                    {/* IMAGEN */}
-                    <div className="overflow-hidden">
-
-                      <img
-                        src={project.image}
-                        className="h-[640px] w-[360px] object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-
+                    <div className="mb-3 text-xs uppercase tracking-[0.3em] text-orange-400">
+                      {project.category}
                     </div>
 
-                    {/* OVERLAY */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                    <h3 className="max-w-[320px] text-4xl font-light leading-tight">
+                      {project.title}
+                    </h3>
 
-                    {/* GLOW */}
-                    <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                  </div>
 
-                      <div className="absolute bottom-0 h-1/2 w-full bg-orange-500/20 blur-3xl" />
+                </motion.div>
 
-                    </div>
+              );
 
-                    {/* TEXTO */}
-                    <div className="absolute bottom-0 p-8">
-
-                      <div className="mb-3 text-xs uppercase tracking-[0.3em] text-orange-400">
-                        {project.category}
-                      </div>
-
-                      <h3 className="max-w-[280px] text-3xl font-light leading-tight">
-                        {project.title}
-                      </h3>
-
-                    </div>
-
-                  </motion.div>
-
-                ))}
-
-              </div>
-
-            </div>
+            })}
 
           </div>
 
         </div>
 
       </section>
-
-      {/* OCULTAR SCROLLBAR */}
-      <style jsx global>{`
-        ::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
 
     </main>
   );
