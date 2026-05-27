@@ -42,15 +42,19 @@ export default function Home() {
   return (
     <main className="relative h-screen overflow-hidden bg-black text-white">
 
-      {/* GLOW */}
-      <div className="absolute top-[-20vh] left-1/2 h-[65vw] w-[65vw] -translate-x-1/2 rounded-full bg-orange-500/20 blur-3xl" />
+      {/* BACKGROUND GLOW */}
+      <div className="absolute inset-0">
 
-      <div className="absolute bottom-[-15vh] left-0 h-[30vw] w-[30vw] bg-red-500/10 blur-3xl" />
+        <div className="absolute left-1/2 top-[-25vh] h-[70vw] w-[70vw] -translate-x-1/2 rounded-full bg-orange-500/20 blur-3xl" />
+
+        <div className="absolute bottom-[-10vh] left-[-5vw] h-[30vw] w-[30vw] rounded-full bg-red-500/10 blur-3xl" />
+
+      </div>
 
       {/* NAVBAR */}
-      <header className="fixed top-0 z-50 w-full px-[4vw] py-[2vh]">
+      <header className="absolute top-0 z-50 w-full px-[3vw] py-[2vh]">
 
-        <div className="mx-auto flex max-w-[1700px] items-center justify-between">
+        <div className="mx-auto flex max-w-[1800px] items-center justify-between">
 
           <div className="text-[0.65rem] uppercase tracking-[0.45em] text-zinc-500">
             Creaciones Bengala
@@ -58,15 +62,15 @@ export default function Home() {
 
           <nav className="hidden md:flex gap-10 text-[0.65rem] uppercase tracking-[0.35em] text-zinc-400">
 
-            <button className="hover:text-white transition-colors duration-500">
+            <button className="transition hover:text-white">
               Proyectos
             </button>
 
-            <button className="hover:text-white transition-colors duration-500">
+            <button className="transition hover:text-white">
               Quiénes somos
             </button>
 
-            <button className="hover:text-white transition-colors duration-500">
+            <button className="transition hover:text-white">
               Contacto
             </button>
 
@@ -76,138 +80,142 @@ export default function Home() {
 
       </header>
 
-      {/* CONTENIDO */}
-      <section className="relative z-10 flex h-full flex-col items-center justify-center px-[4vw] pt-[6vh]">
+      {/* MAIN */}
+      <section className="relative z-10 flex h-full flex-col px-[3vw] pt-[9vh] pb-[3vh]">
 
-        <div className="mx-auto flex w-full max-w-[1700px] flex-col items-center">
+        <div className="mx-auto flex h-full w-full max-w-[1800px] flex-col">
 
-          {/* LOGO */}
-          <motion.img
-            src="/logo.png"
-            alt="Creaciones Bengala"
-            className="mb-[1vh] w-[clamp(420px,38vw,760px)]"
-            initial={{ opacity: 0, scale: 0.92 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-          />
+          {/* HERO */}
+          <div className="flex flex-col items-center">
 
-          {/* SLOGAN */}
-          <motion.h1
-            className="max-w-[1200px] text-center text-[clamp(1.2rem,2vw,2.4rem)] font-light leading-[1.15]"
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          >
-            Convertimos tus ideas en experiencias reales.
-          </motion.h1>
+            {/* LOGO */}
+            <motion.img
+              src="/logo.png"
+              alt="Creaciones Bengala"
+              className="w-[clamp(380px,34vw,760px)] object-contain"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
+            />
 
-          {/* BOTONES */}
-          <motion.div
-            className="mt-[2.5vh] flex flex-wrap items-center justify-center gap-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
+            {/* SLOGAN */}
+            <motion.h1
+              className="mt-[1vh] max-w-[900px] text-center text-[clamp(1.2rem,2vw,2.8rem)] font-light leading-[1.15] text-white/90"
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+            >
+              Convertimos tus ideas en experiencias reales.
+            </motion.h1>
 
-            {[
-              "Explorar proyectos",
-              "Quiénes somos",
-              "Cuéntanos tu proyecto",
-            ].map((item) => (
-
-              <button
-                key={item}
-                className="group relative overflow-hidden border border-white/20 px-10 py-4 uppercase tracking-[0.3em] text-[0.65rem]"
-              >
-
-                <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
-                  {item}
-                </span>
-
-                <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-500 group-hover:translate-y-0" />
-
-              </button>
-
-            ))}
-
-          </motion.div>
-
-          {/* TITULO */}
-          <div className="mt-[4vh] mb-[2vh] text-[0.7rem] uppercase tracking-[0.45em] text-zinc-500">
-            Proyectos destacados
           </div>
 
-          {/* GALERÍA */}
-          <div className="flex h-[clamp(360px,50vh,620px)] w-full gap-4 overflow-hidden">
+          {/* CONTENT */}
+          <div className="mt-[4vh] flex flex-1 gap-[2vw] overflow-hidden">
 
-            {projects.map((project, index) => {
+            {/* BOTONES */}
+            <div className="flex w-[260px] min-w-[260px] flex-col justify-center gap-4">
 
-              const isActive = active === index;
+              {[
+                "Explorar proyectos",
+                "Quiénes somos",
+                "Cuéntanos tu proyecto",
+              ].map((item) => (
 
-              return (
-
-                <motion.div
-                  key={index}
-                  onMouseEnter={() => setActive(index)}
-                  animate={{
-                    width: isActive ? "44%" : "14%",
-                  }}
-                  transition={{
-                    duration: 0.45,
-                  }}
-                  className="group relative h-full cursor-pointer overflow-hidden rounded-[2.2rem] bg-zinc-900"
+                <button
+                  key={item}
+                  className="group relative overflow-hidden border border-white/15 bg-white/[0.02] px-8 py-5 text-left uppercase tracking-[0.28em] text-[0.68rem] backdrop-blur-sm transition-all duration-500 hover:border-white/40"
                 >
 
-                  {/* IMAGEN */}
-                  <img
-                    src={project.image}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
+                  <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
+                    {item}
+                  </span>
 
-                  {/* OVERLAY */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                  <div className="absolute inset-0 translate-y-full bg-white transition-transform duration-500 group-hover:translate-y-0" />
 
-                  {/* TEXTO */}
-                  <div
-                    className={`absolute bottom-0 p-[2vw] transition-all duration-500 ${
-                      isActive
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-10"
-                    }`}
-                  >
+                </button>
 
-                    <div className="mb-3 text-[0.7rem] uppercase tracking-[0.3em] text-orange-400">
-                      {project.category}
-                    </div>
+              ))}
 
-                    <h3 className="max-w-[420px] text-[clamp(1.4rem,2vw,3rem)] font-light leading-tight">
-                      {project.title}
-                    </h3>
+              {/* REDES */}
+              <div className="mt-4 flex gap-5 text-[0.7rem] uppercase tracking-[0.3em] text-zinc-500">
 
-                  </div>
+                <button className="transition hover:text-white">
+                  Instagram
+                </button>
 
-                </motion.div>
+                <button className="transition hover:text-white">
+                  WhatsApp
+                </button>
 
-              );
+              </div>
 
-            })}
+            </div>
 
-          </div>
+            {/* GALERÍA */}
+            <div className="flex flex-1 flex-col overflow-hidden">
 
-          {/* REDES */}
-          <div className="mt-[3vh] flex items-center gap-8 text-zinc-500">
+              <div className="mb-[1.5vh] text-[0.65rem] uppercase tracking-[0.45em] text-zinc-500">
+                Proyectos destacados
+              </div>
 
-            <button className="hover:text-white transition-colors duration-500 text-sm tracking-[0.3em] uppercase">
-              Instagram
-            </button>
+              <div className="flex flex-1 gap-4 overflow-hidden">
 
-            <button className="hover:text-white transition-colors duration-500 text-sm tracking-[0.3em] uppercase">
-              Facebook
-            </button>
+                {projects.map((project, index) => {
 
-            <button className="hover:text-white transition-colors duration-500 text-sm tracking-[0.3em] uppercase">
-              WhatsApp
-            </button>
+                  const isActive = active === index;
+
+                  return (
+
+                    <motion.div
+                      key={index}
+                      onMouseEnter={() => setActive(index)}
+                      animate={{
+                        width: isActive ? "46%" : "13.5%",
+                      }}
+                      transition={{
+                        duration: 0.45,
+                      }}
+                      className="group relative h-full cursor-pointer overflow-hidden rounded-[2rem] bg-zinc-900"
+                    >
+
+                      {/* IMAGE */}
+                      <img
+                        src={project.image}
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+
+                      {/* OVERLAY */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+
+                      {/* CONTENT */}
+                      <div
+                        className={`absolute bottom-0 left-0 w-full p-[2vw] transition-all duration-500 ${
+                          isActive
+                            ? "translate-y-0 opacity-100"
+                            : "translate-y-10 opacity-0"
+                        }`}
+                      >
+
+                        <div className="mb-3 text-[0.65rem] uppercase tracking-[0.3em] text-orange-400">
+                          {project.category}
+                        </div>
+
+                        <h3 className="max-w-[420px] text-[clamp(1.3rem,2vw,3rem)] font-light leading-tight">
+                          {project.title}
+                        </h3>
+
+                      </div>
+
+                    </motion.div>
+
+                  );
+
+                })}
+
+              </div>
+
+            </div>
 
           </div>
 
